@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36221.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ScreenCover", "ScreenCover\ScreenCover.vcxproj", "{4035F262-0A0C-4005-AE15-C1EBEEE2A866}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DesktopInitial", "DesktopInitial\DesktopInitial.vcxproj", "{653F8192-8CE9-460B-B2FA-F1F877F92580}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HotKeyHooker", "HotKeyHooker\HotKeyHooker.vcxproj", "{AD1004C8-74A0-4C26-8925-20ABA20654E6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CoverProtector", "CoverProtector\CoverProtector.vcxproj", "{1F431E3F-F89A-0A3A-FFF6-D7B9974D9537}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4035F262-0A0C-4005-AE15-C1EBEEE2A866}.Debug|x64.ActiveCfg = Debug|x64
+		{4035F262-0A0C-4005-AE15-C1EBEEE2A866}.Debug|x64.Build.0 = Debug|x64
+		{4035F262-0A0C-4005-AE15-C1EBEEE2A866}.Debug|x86.ActiveCfg = Debug|Win32
+		{4035F262-0A0C-4005-AE15-C1EBEEE2A866}.Debug|x86.Build.0 = Debug|Win32
+		{4035F262-0A0C-4005-AE15-C1EBEEE2A866}.Release|x64.ActiveCfg = Release|x64
+		{4035F262-0A0C-4005-AE15-C1EBEEE2A866}.Release|x64.Build.0 = Release|x64
+		{4035F262-0A0C-4005-AE15-C1EBEEE2A866}.Release|x86.ActiveCfg = Release|Win32
+		{4035F262-0A0C-4005-AE15-C1EBEEE2A866}.Release|x86.Build.0 = Release|Win32
+		{653F8192-8CE9-460B-B2FA-F1F877F92580}.Debug|x64.ActiveCfg = Debug|x64
+		{653F8192-8CE9-460B-B2FA-F1F877F92580}.Debug|x64.Build.0 = Debug|x64
+		{653F8192-8CE9-460B-B2FA-F1F877F92580}.Debug|x86.ActiveCfg = Debug|Win32
+		{653F8192-8CE9-460B-B2FA-F1F877F92580}.Debug|x86.Build.0 = Debug|Win32
+		{653F8192-8CE9-460B-B2FA-F1F877F92580}.Release|x64.ActiveCfg = Release|x64
+		{653F8192-8CE9-460B-B2FA-F1F877F92580}.Release|x64.Build.0 = Release|x64
+		{653F8192-8CE9-460B-B2FA-F1F877F92580}.Release|x86.ActiveCfg = Release|Win32
+		{653F8192-8CE9-460B-B2FA-F1F877F92580}.Release|x86.Build.0 = Release|Win32
+		{AD1004C8-74A0-4C26-8925-20ABA20654E6}.Debug|x64.ActiveCfg = Debug|x64
+		{AD1004C8-74A0-4C26-8925-20ABA20654E6}.Debug|x64.Build.0 = Debug|x64
+		{AD1004C8-74A0-4C26-8925-20ABA20654E6}.Debug|x86.ActiveCfg = Debug|Win32
+		{AD1004C8-74A0-4C26-8925-20ABA20654E6}.Debug|x86.Build.0 = Debug|Win32
+		{AD1004C8-74A0-4C26-8925-20ABA20654E6}.Release|x64.ActiveCfg = Release|x64
+		{AD1004C8-74A0-4C26-8925-20ABA20654E6}.Release|x64.Build.0 = Release|x64
+		{AD1004C8-74A0-4C26-8925-20ABA20654E6}.Release|x86.ActiveCfg = Release|Win32
+		{AD1004C8-74A0-4C26-8925-20ABA20654E6}.Release|x86.Build.0 = Release|Win32
+		{1F431E3F-F89A-0A3A-FFF6-D7B9974D9537}.Debug|x64.ActiveCfg = Debug|x64
+		{1F431E3F-F89A-0A3A-FFF6-D7B9974D9537}.Debug|x64.Build.0 = Debug|x64
+		{1F431E3F-F89A-0A3A-FFF6-D7B9974D9537}.Debug|x64.Deploy.0 = Debug|x64
+		{1F431E3F-F89A-0A3A-FFF6-D7B9974D9537}.Debug|x86.ActiveCfg = Debug|x64
+		{1F431E3F-F89A-0A3A-FFF6-D7B9974D9537}.Debug|x86.Build.0 = Debug|x64
+		{1F431E3F-F89A-0A3A-FFF6-D7B9974D9537}.Debug|x86.Deploy.0 = Debug|x64
+		{1F431E3F-F89A-0A3A-FFF6-D7B9974D9537}.Release|x64.ActiveCfg = Release|x64
+		{1F431E3F-F89A-0A3A-FFF6-D7B9974D9537}.Release|x64.Build.0 = Release|x64
+		{1F431E3F-F89A-0A3A-FFF6-D7B9974D9537}.Release|x64.Deploy.0 = Release|x64
+		{1F431E3F-F89A-0A3A-FFF6-D7B9974D9537}.Release|x86.ActiveCfg = Release|x64
+		{1F431E3F-F89A-0A3A-FFF6-D7B9974D9537}.Release|x86.Build.0 = Release|x64
+		{1F431E3F-F89A-0A3A-FFF6-D7B9974D9537}.Release|x86.Deploy.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D216332-938E-4596-B719-7F0A6F65A583}
+	EndGlobalSection
+EndGlobal

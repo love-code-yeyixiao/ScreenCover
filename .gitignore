@@ -39,3 +39,10 @@
 
 # debug information files
 *.dwo
+/.vs
+/CoverProtector/x64/Debug
+/DesktopInitial/x64/Debug
+/HotKeyHooker/x64/Debug
+/ScreenCover/x64/Debug/ScreenCover.tlog
+/ScreenCover/x64/Debug
+/x64/Debug
