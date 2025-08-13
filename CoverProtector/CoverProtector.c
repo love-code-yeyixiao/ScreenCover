@@ -88,7 +88,7 @@ NTSTATUS DriverEntry(PDRIVER_OBJECT DriverObject, PUNICODE_STRING RegistryPath)
         return status;
     }
 
-    KdPrint(("Major Privacy Security Driver loaded successfully\n"));
+    KdPrint(("Security Driver loaded successfully\n"));
     return STATUS_SUCCESS;
 }
 
@@ -104,7 +104,7 @@ VOID DriverUnload(PDRIVER_OBJECT DriverObject)
 
     PsRemoveLoadImageNotifyRoutine(ImageLoadCallback);
 
-    KdPrint(("Major Privacy Security Driver unloaded\n"));
+    KdPrint(("Security Driver unloaded\n"));
 }
 
 // 对象操作回调
