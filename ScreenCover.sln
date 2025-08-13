@@ -5,8 +5,6 @@ VisualStudioVersion = 17.14.36221.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ScreenCover", "ScreenCover\ScreenCover.vcxproj", "{4035F262-0A0C-4005-AE15-C1EBEEE2A866}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DesktopInitial", "DesktopInitial\DesktopInitial.vcxproj", "{653F8192-8CE9-460B-B2FA-F1F877F92580}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HotKeyHooker", "HotKeyHooker\HotKeyHooker.vcxproj", "{AD1004C8-74A0-4C26-8925-20ABA20654E6}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CoverProtector", "CoverProtector\CoverProtector.vcxproj", "{1F431E3F-F89A-0A3A-FFF6-D7B9974D9537}"
@@ -27,14 +25,6 @@ Global
 		{4035F262-0A0C-4005-AE15-C1EBEEE2A866}.Release|x64.Build.0 = Release|x64
 		{4035F262-0A0C-4005-AE15-C1EBEEE2A866}.Release|x86.ActiveCfg = Release|Win32
 		{4035F262-0A0C-4005-AE15-C1EBEEE2A866}.Release|x86.Build.0 = Release|Win32
-		{653F8192-8CE9-460B-B2FA-F1F877F92580}.Debug|x64.ActiveCfg = Debug|x64
-		{653F8192-8CE9-460B-B2FA-F1F877F92580}.Debug|x64.Build.0 = Debug|x64
-		{653F8192-8CE9-460B-B2FA-F1F877F92580}.Debug|x86.ActiveCfg = Debug|Win32
-		{653F8192-8CE9-460B-B2FA-F1F877F92580}.Debug|x86.Build.0 = Debug|Win32
-		{653F8192-8CE9-460B-B2FA-F1F877F92580}.Release|x64.ActiveCfg = Release|x64
-		{653F8192-8CE9-460B-B2FA-F1F877F92580}.Release|x64.Build.0 = Release|x64
-		{653F8192-8CE9-460B-B2FA-F1F877F92580}.Release|x86.ActiveCfg = Release|Win32
-		{653F8192-8CE9-460B-B2FA-F1F877F92580}.Release|x86.Build.0 = Release|Win32
 		{AD1004C8-74A0-4C26-8925-20ABA20654E6}.Debug|x64.ActiveCfg = Debug|x64
 		{AD1004C8-74A0-4C26-8925-20ABA20654E6}.Debug|x64.Build.0 = Debug|x64
 		{AD1004C8-74A0-4C26-8925-20ABA20654E6}.Debug|x86.ActiveCfg = Debug|Win32
