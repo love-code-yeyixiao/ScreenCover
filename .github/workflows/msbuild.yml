@@ -15,25 +15,27 @@ permissions:
 
 jobs:
   build:
-    runs-on: windows-2025
+    runs-on: windows-2025  # 显式使用 Windows Server 2025
 
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install WDK
-      run: |
-        choco install windows-driver-kit -y
+    # 安装 WDK（微软官方 Action，会配置好 Ntifs.h 的路径）
+    - name: Setup WDK
+      uses: microsoft/setup-wdk@v1
+      with:
+        wdk-version: 10.0.22621.0  # Win11 22H2 对应 WDK
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.3.3
 
     - name: Restore NuGet packages
-      working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: nuget restore ${{env.SOLUTION_FILE_PATH}}
+      working-directory: ${{ env.GITHUB_WORKSPACE }}
+      run: nuget restore ${{ env.SOLUTION_FILE_PATH }}
 
     - name: Build
-      working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+      working-directory: ${{ env.GITHUB_WORKSPACE }}
+      run: msbuild /m /p:Configuration=${{ env.BUILD_CONFIGURATION }} ${{ env.SOLUTION_FILE_PATH }}
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
