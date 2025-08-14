@@ -1,26 +1,42 @@
-name: Build with WDK
+name: MSBuild
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  # Path to the solution file relative to the root of the project.
+  SOLUTION_FILE_PATH: .
+  # Configuration type to build. Can be Release or Debug.
+  BUILD_CONFIGURATION: Release
+
+permissions:
+  contents: read
 
 jobs:
   build:
-    runs-on: windows-2022
+    runs-on: windows-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Install WDK
-        shell: pwsh
-        run: |
-          $ErrorActionPreference = 'Stop'
-          $wdkUrl = "https://go.microsoft.com/fwlink/?linkid=2249734"  # Windows 10, version 2004 WDK
-          Invoke-WebRequest -Uri $wdkUrl -OutFile wdksetup.exe
-          Start-Process .\wdksetup.exe -ArgumentList "/quiet /norestart" -Wait
+      - name: Add MSBuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
 
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v2
+      - name: Restore NuGet packages
+        working-directory: ${{env.GITHUB_WORKSPACE}}
+        run: nuget restore ${{env.SOLUTION_FILE_PATH}}
 
-      - name: Build solution (Debug x64)
-        run: msbuild ScreenCover.sln /t:Build /p:Configuration=Debug /p:Platform=x64 /m
+      - name: Build
+        working-directory: ${{env.GITHUB_WORKSPACE}}
+        # Add additional options to the MSBuild command line here
+        run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: BuildOutput
+          # 假设输出在 SOLUTION_FILE_PATH 下的 bin/Release 文件夹
+          path: ${{env.GITHUB_WORKSPACE}}/bin/${{env.BUILD_CONFIGURATION}}
