@@ -1,30 +1,26 @@
-name: Build All (x64 Debug)
+name: Build with WDK
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
-    runs-on: windows-2025
+    runs-on: windows-2022
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install WDK
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $wdkUrl = "https://go.microsoft.com/fwlink/?linkid=2249734"  # Windows 10, version 2004 WDK
+          Invoke-WebRequest -Uri $wdkUrl -OutFile wdksetup.exe
+          Start-Process .\wdksetup.exe -ArgumentList "/quiet /norestart" -Wait
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
-      - name: Restore NuGet packages
-        run: nuget restore ScreenCover.sln
-
-      - name: Build all projects (Debug x64)
+      - name: Build solution (Debug x64)
         run: msbuild ScreenCover.sln /t:Build /p:Configuration=Debug /p:Platform=x64 /m
-
-      - name: Upload all build outputs
-        uses: actions/upload-artifact@v4
-        with:
-          name: BuildOutput-x64-Debug
-          path: |
-            **/x64/Debug/**
