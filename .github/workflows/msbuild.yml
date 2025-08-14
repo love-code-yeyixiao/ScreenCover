@@ -13,16 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install Windows Driver Kit (WDK)
-        shell: powershell
-        run: |
-          $ErrorActionPreference = 'Stop'
-          Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/?linkid=2246015" -OutFile "wdksetup.exe"
-          Start-Process .\wdksetup.exe -ArgumentList "/quiet /norestart" -Wait
-          if (-not (Test-Path "C:\Program Files (x86)\Windows Kits\10\Include" -Recurse -Include Ntifs.h)) {
-            Write-Error "WDK installation failed or Ntifs.h not found"
-          }
-
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
