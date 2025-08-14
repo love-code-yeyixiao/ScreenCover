@@ -1,45 +1,40 @@
-name: MSBuild
+name: Build All (x64 Debug)
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "master" ]
-
-env:
-  SOLUTION_FILE_PATH: .
-  BUILD_CONFIGURATION: Release
-
-permissions:
-  contents: read
 
 jobs:
   build:
-    runs-on: windows-2025  # 显式使用 Windows Server 2025
-
+    runs-on: windows-2025
     steps:
-    - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    # 安装 WDK（微软官方 Action，会配置好 Ntifs.h 的路径）
-    - name: Setup WDK
-      uses: microsoft/setup-wdk@v1
-      with:
-        wdk-version: 10.0.22621.0  # Win11 22H2 对应 WDK
+      - name: Install Windows Driver Kit (WDK)
+        shell: powershell
+        run: |
+          $ErrorActionPreference = 'Stop'
+          Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/?linkid=2246015" -OutFile "wdksetup.exe"
+          Start-Process .\wdksetup.exe -ArgumentList "/quiet /norestart" -Wait
+          if (-not (Test-Path "C:\Program Files (x86)\Windows Kits\10\Include" -Recurse -Include Ntifs.h)) {
+            Write-Error "WDK installation failed or Ntifs.h not found"
+          }
 
-    - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1.3.3
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
 
-    - name: Restore NuGet packages
-      working-directory: ${{ env.GITHUB_WORKSPACE }}
-      run: nuget restore ${{ env.SOLUTION_FILE_PATH }}
+      - name: Restore NuGet packages
+        run: nuget restore ScreenCover.sln
 
-    - name: Build
-      working-directory: ${{ env.GITHUB_WORKSPACE }}
-      run: msbuild /m /p:Configuration=${{ env.BUILD_CONFIGURATION }} ${{ env.SOLUTION_FILE_PATH }}
+      - name: Build all projects (Debug x64)
+        run: msbuild ScreenCover.sln /t:Build /p:Configuration=Debug /p:Platform=x64 /m
 
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: build-${{ env.BUILD_CONFIGURATION }}
-        path: |
-          **/bin/${{ env.BUILD_CONFIGURATION }}/
+      - name: Upload all build outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: BuildOutput-x64-Debug
+          path: |
+            **/x64/Debug/**
