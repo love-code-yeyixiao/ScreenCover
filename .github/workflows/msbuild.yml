@@ -15,10 +15,14 @@ permissions:
 
 jobs:
   build:
-    runs-on: windows-2025  # 显式使用 Windows Server 2025
+    runs-on: windows-2025
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Install WDK
+      run: |
+        choco install windows-driver-kit -y
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.3.3
