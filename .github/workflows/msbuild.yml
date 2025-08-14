@@ -43,8 +43,9 @@ jobs:
           echo "::set-output name=paths::$(($paths -join ';'))"
         shell: powershell
 
-      - name: Upload all build artifacts
+      - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: BuildOutputs
-          path: ${{ steps.find_outputs.outputs.paths }}
+          path: ${{ env.GITHUB_WORKSPACE }}/x64/${{ env.BUILD_CONFIGURATION }}
+
